@@ -198,6 +198,15 @@
   .rieq-da { font-family:sans-serif; font-weight:700; font-size:14px; color:var(--navy); }
   .rieq-dest { font-size:12px; color:var(--mid); }
   .rieq-imp { font-family:Georgia,serif; font-size:23px; font-weight:700; color:var(--urg-fg); }
+  .splid-card { margin-bottom:16px; padding:18px; border-radius:var(--radius); color:#fff;
+    background:linear-gradient(135deg,#176d73,#1a3a5b); box-shadow:0 12px 28px rgba(26,58,91,.22); }
+  .splid-kicker { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; opacity:.72; }
+  .splid-title { margin:4px 0 5px; font-family:Georgia,serif; font-size:22px; font-weight:700; }
+  .splid-copy { font-size:13.5px; line-height:1.5; opacity:.9; }
+  .splid-actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
+  .splid-actions .btn { margin:0; background:#fff; color:var(--navy); }
+  .splid-actions .btn-secondary { background:rgba(255,255,255,.14); color:#fff; border:1px solid rgba(255,255,255,.45); }
+  #splid-copy-status { min-height:18px; margin-top:7px; font-size:11px; opacity:.8; text-align:center; }
   .mov-table { width:100%; border-collapse:collapse; font-family:sans-serif; font-size:12.5px; min-width:320px; }
   .mov-table th { background:var(--navy); color:#fff; padding:7px 10px; text-align:left; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; }
   .mov-table tr:nth-child(even) td { background:var(--row-alt); }
@@ -261,6 +270,64 @@
   /* ── Accessibilità: focus visibile ── */
   button:focus-visible, a:focus-visible { outline:3px solid var(--teal); outline-offset:2px; }
 
+  /* ── Revisione estate 2026: più leggibile e piacevole su telefono ── */
+  :root { --shadow:0 10px 30px rgba(20,42,61,.10); --radius:14px; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:#dfe8e8; overscroll-behavior-y:auto; }
+  #app { background:linear-gradient(180deg,#eaf1f0 0,#f5f1e9 440px); box-shadow:0 0 50px rgba(20,42,61,.12); }
+  #topbar { height:calc(54px + env(safe-area-inset-top)); padding-left:18px; padding-right:18px; background:rgba(18,47,70,.97); }
+  #topbar .title { font-size:14px; color:#fff5d6; letter-spacing:.015em; }
+  #topbar .names { color:rgba(255,255,255,.7); }
+  #tabbar { top:calc(54px + env(safe-area-inset-top)); gap:7px; padding:8px 12px; background:rgba(250,248,243,.96); border:0; box-shadow:0 5px 18px rgba(20,42,61,.10); }
+  .tab { min-height:44px; padding:9px 13px; border:1px solid #d8dedc; border-radius:999px; background:#fff; font-size:12px; font-weight:650; }
+  .tab.active { background:var(--navy); border-color:var(--navy); border-bottom-color:var(--navy); box-shadow:0 5px 14px rgba(26,58,91,.22); }
+  .panel { padding:24px 18px 32px; background:rgba(255,255,255,.92); }
+  #panel-itinerario { background:transparent; }
+  .section-title { font-size:clamp(24px,6vw,34px); font-weight:600; letter-spacing:-.02em; }
+  .section-rule { width:54px; height:3px; background:var(--teal); border-radius:3px; margin-bottom:22px; }
+  .card,.acc,.alloggio-card,.ticket,.budget-box,.spese-total-box,.tkt-card { border:0; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+  .alloggio-card,.ticket { border-left:4px solid; padding:15px 16px; margin-bottom:12px; }
+  .ticket { padding:0; }
+  .info-row { grid-template-columns:96px 1fr; }
+  .info-row .lbl { padding:11px 10px; }
+  .info-row .val { padding:11px 13px; font-size:14px; line-height:1.58; }
+  .btn { min-height:44px; padding:11px 15px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; }
+  .acc-hdr { min-height:48px; padding:13px 15px; }
+  #panel-cover { padding:30px 18px 36px; background:linear-gradient(180deg,#f7f4ec,#fff 68%); }
+  .cover-main-title { font-size:clamp(29px,7.5vw,46px); font-weight:600; letter-spacing:-.02em; }
+  .cover-photo-castles { border:0; border-radius:18px; box-shadow:0 18px 45px rgba(18,47,70,.22); margin:18px 0 0; }
+  .cover-photo-selfie-wrap { margin:-42px 0 16px; position:relative; z-index:2; }
+  .cover-photo-selfie { width:118px; border:5px solid #fff; border-radius:50%; box-shadow:0 10px 24px rgba(18,47,70,.22); }
+  .cover-date { color:#8b342d; font-size:20px; font-weight:600; margin-top:4px; }
+  .cover-tagline { font-size:15px; line-height:1.5; }
+  .cover-status { gap:10px; }
+  .cover-status-item { min-height:90px; border-radius:12px; display:flex; flex-direction:column; justify-content:center; }
+  .cover-nav { gap:9px; }
+  .cover-nav-btn { min-height:50px; padding:12px; border-radius:12px; background:#183f5d; font-size:13px; }
+  .day-card { margin:10px 12px; border-radius:14px; overflow:hidden; box-shadow:var(--shadow); }
+  .day-header { grid-template-columns:58px 1fr auto; }
+  .day-num { min-height:74px; }
+  .day-titolo { font-size:18px; font-weight:600; }
+  .day-base { max-width:115px; }
+  .day-photo img { height:220px; }
+  .date-strip { padding-bottom:10px; }
+  .date-chip { min-height:58px; border-radius:10px; }
+  .chk-item { min-height:56px; }
+  .chk-box { width:26px; height:26px; }
+  #footer { margin-top:0; }
+  @media (max-width:520px) {
+    #topbar .names { display:none; }
+    .panel { padding-left:14px; padding-right:14px; }
+    .info-row { grid-template-columns:82px 1fr; }
+    .cover-status { grid-template-columns:1fr; }
+    .cover-status-item { min-height:68px; display:grid; grid-template-columns:34px 1fr; grid-template-rows:auto auto; text-align:left; column-gap:8px; padding:10px 14px; }
+    .cover-status-emoji { grid-row:1 / 3; align-self:center; margin:0; }
+    .cover-status-lbl,.cover-status-val { align-self:end; }
+    .cover-status-val { align-self:start; }
+    .day-right { min-width:70px; padding-left:5px; }
+    .day-quick { position:sticky; top:115px; z-index:2; }
+    .tkt-grid,.park-grid,.budget-grid { grid-template-columns:1fr; }
+  }
+
   /* ── STAMPA: documento completo, tutte le sezioni aperte ── */
   @media print {
     body, #app { background:#fff !important; max-width:100%; }
@@ -293,7 +360,7 @@
     <span class="names">Roberto & Gigi | Cinzia & Davide</span>
   </div>
   <div id="tabbar">
-    <button class="tab active" onclick="showTab('cover')">🏠 Cover</button>
+    <button class="tab active" onclick="showTab('cover')">🏠 Inizio</button>
     <button class="tab" onclick="showTab('itinerario')">🗺 Itinerario</button>
     <button class="tab" onclick="showTab('biglietti')">🎫 Biglietti</button>
     <button class="tab" onclick="showTab('trasporti')">🚆 Trasporti</button>
@@ -314,7 +381,7 @@
     <div class="cover-date">25 luglio – 8 agosto 2026</div>
     <div id="countdown"></div>
     <div class="cover-names">Roberto & Gigi | Cinzia & Davide</div>
-    <div class="cover-tagline">Memoria storica · Oceano atlantico · Magia Disney</div>
+    <div class="cover-tagline">Dalla memoria della Normandia all'oceano bretone, fino alla magia di Disneyland Paris.</div>
     <div class="cover-private">Documento personale · uso privato</div>
     <div class="cover-status">
       <div class="cover-status-item" style="background:var(--done-bg);cursor:pointer" onclick="showTab('alloggi')">
@@ -330,26 +397,26 @@
       <div class="cover-status-item" style="background:var(--warn-bg);cursor:pointer" onclick="showTab('spese')">
         <div class="cover-status-emoji">💶</div>
         <div class="cover-status-lbl" style="color:var(--warn-fg)">Spese</div>
-        <div class="cover-status-val" style="color:var(--warn-fg)">EUR 7.576</div>
+        <div class="cover-status-val" style="color:var(--warn-fg)">EUR 7.691</div>
       </div>
     </div>
     <div class="cover-nav">
-      <button class="cover-nav-btn" onclick="showTab('sintesi')">📋 Sintesi</button>
+      <button class="cover-nav-btn" onclick="showTab('sintesi')">📋 Viaggio in breve</button>
       <button class="cover-nav-btn" onclick="showTab('alloggi')">🏨 Alloggi</button>
       <button class="cover-nav-btn" onclick="showTab('trasporti')">🚆 Trasporti</button>
-      <button class="cover-nav-btn" onclick="showTab('itinerario')">🗺 Itinerario</button>
+      <button class="cover-nav-btn" onclick="showTab('itinerario')">🗺 Giorno per giorno</button>
       <button class="cover-nav-btn" onclick="showTab('disney')">🏰 Disney</button>
       <button class="cover-nav-btn" onclick="showTab('checklist')">✅ Checklist</button>
       <button class="cover-nav-btn" onclick="showTab('biglietti')">🎫 Biglietti</button>
-      <button class="cover-nav-btn" onclick="showTab('spese')">💶 Spese</button>
+      <button class="cover-nav-btn" onclick="showTab('spese')">💶 Spese su Splid</button>
     </div>
   </div>
   <div id="panel-sintesi" class="panel">
     <span class="section-num">§ 1</span>
-    <h2 class="section-title">Sintesi esecutiva del viaggio</h2>
+    <h2 class="section-title">Il viaggio in breve</h2>
     <div class="section-rule"></div>
     <div class="card mb16"><div class="info-row"><div class="lbl">Formula</div><div class="val">Treno → Auto → Treno → Disneyland → Orly</div></div><div class="info-row"><div class="lbl">Partecipanti</div><div class="val">Roberto & Gigi | Cinzia & Davide · 4 persone</div></div><div class="info-row"><div class="lbl">Durata</div><div class="val">15 giorni · 14 notti · 25 luglio – 8 agosto 2026</div></div><div class="info-row"><div class="lbl">Basi</div><div class="val">Caen 25-28 lug · Le Duguesclin 28-29 · Saint-Malo 29 lug–3 ago · Disneyland 3-7 ago · ibis Orly 7 ago</div></div><div class="info-row"><div class="lbl">Auto</div><div class="val">Sixt Caen→Rennes · Ritiro 26 lug 08:30 · Riconsegna 3 ago</div></div><div class="info-row"><div class="lbl">Disney</div><div class="val">Tutti e 4: 4-5-6 agosto (3 gg) · Disneyland Park + Adventure World</div></div><div class="info-row"><div class="lbl">Rientro</div><div class="val">Volo Orly 8 agosto ore 04:20 · in aeroporto entro 02:00</div></div><div class="info-row"><div class="lbl">Logica</div><div class="val">Cultura/storia → paesaggio → finale ludico Disney</div></div></div>
-    <div class="logica-block"><div class="logica-key">MEMORIA STORICA</div><div class="logica-val">Caen, Spiagge dello Sbarco, Étretat — la Normandia come radice culturale e paesaggistica.</div></div><div class="logica-block"><div class="logica-key">BRETAGNA OCEANICA</div><div class="logica-val">Saint-Malo, Cancale, Granito Rosa, Cap Fréhel — l'Atlantico nella sua versione più autentica.</div></div><div class="logica-block"><div class="logica-key">FINALE LUDICO</div><div class="logica-val">Disneyland Paris — cambio di registro voluto, leggerezza come chiusura naturale del viaggio.</div></div>
+    <div class="logica-block"><div class="logica-key">MEMORIA STORICA</div><div class="logica-val">Caen e le spiagge dello Sbarco aprono il viaggio; Étretat aggiunge il primo grande paesaggio.</div></div><div class="logica-block"><div class="logica-key">BRETAGNA OCEANICA</div><div class="logica-val">Saint-Malo, Cancale, la Costa di Granito Rosa e Cap Fréhel raccontano l'Atlantico da prospettive diverse.</div></div><div class="logica-block"><div class="logica-key">FINALE LEGGERO</div><div class="logica-val">Disneyland Paris cambia ritmo e chiude il viaggio con tre giornate libere da vivere insieme.</div></div>
   </div>
   <div id="panel-alloggi" class="panel">
     <span class="section-num">§ 2</span>
@@ -606,21 +673,30 @@
     <span class="section-num">§ 10</span>
     <h2 class="section-title">Spese e riequilibrio</h2>
     <div class="section-rule"></div>
-    <div class="spese-total-box">
-      <div class="spese-total-lbl">TOTALE REGISTRATO · Splid · 11 giugno 2026</div>
-      <div class="spese-total-val">EUR 7.576,19</div>
+    <div class="splid-card">
+      <div class="splid-kicker">Gruppo condiviso</div>
+      <div class="splid-title">Vacanze francesi</div>
+      <div class="splid-copy">Aggiungiamo qui le spese durante il viaggio: Splid aggiorna automaticamente quanto deve ciascuno.</div>
+      <div class="splid-actions">
+        <a class="btn" href="https://splid.net/j/BHQDR44NT" target="_blank" rel="noopener">Apri Splid</a>
+        <button class="btn btn-secondary" type="button" onclick="copySplidCode()">Copia codice</button>
+      </div>
+      <div id="splid-copy-status" aria-live="polite">Codice: BHQ DR4 4NT</div>
     </div>
-    <div class="quota-row"><div class="quota-name">Cinzia</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:23.3%"></div></div></div><div class="quota-val">EUR 1.763,22</div><div class="quota-pct">23.3%</div></div><div class="quota-row"><div class="quota-name">Davide</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:23.4%"></div></div></div><div class="quota-val">EUR 1.771,06</div><div class="quota-pct">23.4%</div></div><div class="quota-row"><div class="quota-name">Gigi</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:26.7%"></div></div></div><div class="quota-val">EUR 2.020,96</div><div class="quota-pct">26.7%</div></div><div class="quota-row"><div class="quota-name">Roberto</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:26.7%"></div></div></div><div class="quota-val">EUR 2.020,96</div><div class="quota-pct">26.7%</div></div>
+    <div class="spese-total-box">
+      <div class="spese-total-lbl">ULTIMO RIEPILOGO SPLID · 12 LUGLIO 2026</div>
+      <div class="spese-total-val">EUR 7.690,80</div>
+    </div>
+    <div class="quota-row"><div class="quota-name">Cinzia</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:23.67%"></div></div></div><div class="quota-val">EUR 1.820,53</div><div class="quota-pct">23,7%</div></div><div class="quota-row"><div class="quota-name">Davide</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:23.77%"></div></div></div><div class="quota-val">EUR 1.828,36</div><div class="quota-pct">23,8%</div></div><div class="quota-row"><div class="quota-name">Gigi</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:26.28%"></div></div></div><div class="quota-val">EUR 2.020,96</div><div class="quota-pct">26,3%</div></div><div class="quota-row"><div class="quota-name">Roberto</div><div class="quota-bar-wrap"><div class="bar"><div class="bar-fill" style="width:26.28%"></div></div></div><div class="quota-val">EUR 2.020,96</div><div class="quota-pct">26,3%</div></div>
     <div style="font-family:sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mid);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border)">CHI DEVE A CHI</div>
-    <div class="rieq-item"><div><div class="rieq-da">Roberto</div><div class="rieq-dest">deve a Gigi</div></div><div class="rieq-imp">EUR 173,95</div></div>
-    <div class="rieq-item"><div><div class="rieq-da">Cinzia</div><div class="rieq-dest">deve a Davide</div></div><div class="rieq-imp">EUR 51,60</div></div>
+    <div class="rieq-item" style="background:var(--done-bg);border-color:var(--done-fg)"><div><div class="rieq-da" style="color:var(--done-fg)">Tutto in pari</div><div class="rieq-dest">Splid non indica pagamenti da effettuare</div></div><div class="rieq-imp" style="color:var(--done-fg)">EUR 0,00</div></div>
     <div class="acc mt16">
-      <button class="acc-hdr" onclick="toggleAcc(this)">Dettaglio movimenti Splid (19 voci · 11/06/2026) <span>▼</span></button>
+      <button class="acc-hdr" onclick="toggleAcc(this)">Dettaglio movimenti Splid (22 voci · 12/07/2026) <span>▼</span></button>
       <div class="acc-body"><div class="overflowx">
         <table class="mov-table">
           <thead><tr><th>Data</th><th>Descrizione</th><th>Da</th><th>Importo</th></tr></thead>
-          <tbody><tr><td>19/04</td><td>Biglietti Parigi A/R</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 500,00</td></tr><tr><td>19/04</td><td>Auto Sixt (noleggio)</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 985,45</td></tr><tr><td>19/04</td><td>Biglietti aerei</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 524,20</td></tr><tr><td>19/04</td><td>Altra spesa</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 23,50</td></tr><tr><td>20/04</td><td>B&B Home Caen</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 513,91</td></tr><tr><td>20/04</td><td>Le Duguesclin</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 340,00</td></tr><tr><td>20/04</td><td>Disneyland Appartements</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 901,33</td></tr><tr><td>21/04</td><td>Kyriad Saint-Malo</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 1.427,00</td></tr><tr class="riq"><td>21/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 779,82</td></tr><tr class="riq"><td>21/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 302,91</td></tr><tr class="riq"><td>26/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 122,00</td></tr><tr><td>06/05</td><td>Altra spesa</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 94,80</td></tr><tr><td>07/05</td><td>Biglietti Disneyland</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 1.196,00</td></tr><tr><td>14/05</td><td>Biglietti Abbazia MSM</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 130,00</td></tr><tr class="riq"><td>14/05</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 355,00</td></tr><tr><td>14/05</td><td>Altra spesa</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 416,00</td></tr><tr class="riq"><td>14/05</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 52,60</td></tr><tr><td>18/05</td><td>Acquisti</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 399,00</td></tr><tr><td>07/06</td><td>Hotel Orly Coeur d'Orly</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 125,00</td></tr></tbody>
-          <tfoot><tr class="tfoot"><td colspan="3">TOTALE</td><td class="imp">EUR 7.576,19</td></tr></tfoot>
+          <tbody><tr><td>19/04</td><td>Biglietti Parigi A/R</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 500,00</td></tr><tr><td>19/04</td><td>Auto Sixt (noleggio)</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 985,45</td></tr><tr><td>19/04</td><td>Biglietti aerei</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 524,20</td></tr><tr><td>19/04</td><td>Pizze da OVEN</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 23,50</td></tr><tr><td>20/04</td><td>B&B Home Caen</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 513,91</td></tr><tr><td>20/04</td><td>Le Duguesclin</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 340,00</td></tr><tr><td>20/04</td><td>Disneyland Appartements</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 901,33</td></tr><tr><td>21/04</td><td>Kyriad Saint-Malo</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 1.427,00</td></tr><tr class="riq"><td>21/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 779,82</td></tr><tr class="riq"><td>21/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 302,91</td></tr><tr class="riq"><td>26/04</td><td>Riequilibrio</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 122,00</td></tr><tr><td>06/05</td><td>SNCF Connect GIUMRF</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 94,80</td></tr><tr><td>07/05</td><td>Biglietti Disneyland</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 1.196,00</td></tr><tr><td>14/05</td><td>Biglietti Abbazia MSM</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 130,00</td></tr><tr class="riq"><td>14/05</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 355,00</td></tr><tr><td>14/05</td><td>SNCF Connect E7FBQL</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 416,00</td></tr><tr class="riq"><td>14/05</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 52,60</td></tr><tr><td>18/05</td><td>Acquisti</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 399,00</td></tr><tr><td>07/06</td><td>Hotel Orly Coeur d'Orly</td><td style="color:var(--teal)">Gigi</td><td class="imp">EUR 125,00</td></tr><tr><td>20/06</td><td>ibis Paris Coeur d'Orly</td><td style="color:var(--teal)">Davide</td><td class="imp">EUR 114,61</td></tr><tr class="riq"><td>20/06</td><td>Riequilibrio</td><td style="color:var(--teal)">Roberto</td><td class="imp">EUR 173,95</td></tr><tr class="riq"><td>20/06</td><td>Riequilibrio</td><td style="color:var(--teal)">Cinzia</td><td class="imp">EUR 108,90</td></tr></tbody>
+          <tfoot><tr class="tfoot"><td colspan="3">TOTALE SPESE</td><td class="imp">EUR 7.690,80</td></tr></tfoot>
         </table>
       </div></div>
     </div>
@@ -704,6 +780,8 @@ function showTab(id) {
   document.querySelectorAll('.tab').forEach(t => {
     if (t.getAttribute('onclick') === `showTab('${id}')`) t.classList.add('active');
   });
+  try { history.replaceState(null, '', '#' + id); } catch(e) {}
+  try { localStorage.setItem('f26_last_tab', id); } catch(e) {}
   window.scrollTo(0, 0);
 }
 
@@ -899,6 +977,17 @@ function resetChk() {
   updateCoverStatus();
 }
 
+async function copySplidCode() {
+  const code = 'BHQDR44NT';
+  const status = document.getElementById('splid-copy-status');
+  try {
+    await navigator.clipboard.writeText(code);
+    if (status) status.textContent = 'Codice copiato: BHQ DR4 4NT';
+  } catch(e) {
+    if (status) status.textContent = 'Codice: BHQ DR4 4NT';
+  }
+}
+
 function tktFilter(p) {
   document.querySelectorAll('.tkt-card').forEach(c => {
     c.style.display = (p === 'Tutti' || c.dataset.person === p) ? '' : 'none';
@@ -925,6 +1014,8 @@ document.addEventListener('DOMContentLoaded', () => {
   restoreChk();
   updateCoverStatus();
   restoreTktFilter();
+  const requestedTab = location.hash.replace('#','');
+  if (requestedTab && document.getElementById('panel-' + requestedTab)) showTab(requestedTab);
   // Durante il viaggio: alla prima apertura del giorno, vai dritto alla scheda di oggi
   const t = tripDayToday();
   if (t) {
