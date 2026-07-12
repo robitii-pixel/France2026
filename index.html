@@ -295,8 +295,8 @@
   #panel-cover { padding:30px 18px 36px; background:linear-gradient(180deg,#f7f4ec,#fff 68%); }
   .cover-main-title { font-size:clamp(29px,7.5vw,46px); font-weight:600; letter-spacing:-.02em; }
   .cover-photo-castles { border:0; border-radius:18px; box-shadow:0 18px 45px rgba(18,47,70,.22); margin:18px 0 0; }
-  .cover-photo-selfie-wrap { margin:-42px 0 16px; position:relative; z-index:2; }
-  .cover-photo-selfie { width:118px; border:5px solid #fff; border-radius:50%; box-shadow:0 10px 24px rgba(18,47,70,.22); }
+  .cover-photo-selfie-wrap { justify-content:flex-end; margin:-46px 0 14px; padding-right:clamp(16px,8vw,58px); position:relative; z-index:2; }
+  .cover-photo-selfie { width:118px; border:5px solid #fff; border-radius:50%; box-shadow:0 12px 28px rgba(18,47,70,.26); transform:rotate(2.5deg); }
   .cover-date { color:#8b342d; font-size:20px; font-weight:600; margin-top:4px; }
   .cover-tagline { font-size:15px; line-height:1.5; }
   .cover-status { gap:10px; }
@@ -319,6 +319,8 @@
     .panel { padding-left:14px; padding-right:14px; }
     .info-row { grid-template-columns:82px 1fr; }
     .cover-status { grid-template-columns:1fr; }
+    .cover-photo-selfie-wrap { margin-top:-39px; padding-right:12px; }
+    .cover-photo-selfie { width:106px; }
     .cover-status-item { min-height:68px; display:grid; grid-template-columns:34px 1fr; grid-template-rows:auto auto; text-align:left; column-gap:8px; padding:10px 14px; }
     .cover-status-emoji { grid-row:1 / 3; align-self:center; margin:0; }
     .cover-status-lbl,.cover-status-val { align-self:end; }
