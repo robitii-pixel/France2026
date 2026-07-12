@@ -394,7 +394,17 @@
     <div class="cover-names">Roberto & Gigi | Cinzia & Davide</div>
     <div class="cover-tagline">Dalla memoria della Normandia all'oceano bretone, fino alla magia di Disneyland Paris.</div>
     <div class="cover-private">Documento personale · uso privato</div>
-    <div class="cover-status">
+    <div class="cover-nav">
+      <button class="cover-nav-btn" onclick="showTab('sintesi')">📋 Viaggio in breve</button>
+      <button class="cover-nav-btn" onclick="showTab('alloggi')">🏨 Alloggi</button>
+      <button class="cover-nav-btn" onclick="showTab('trasporti')">🚆 Trasporti</button>
+      <button class="cover-nav-btn" onclick="showTab('itinerario')">🗺 Giorno per giorno</button>
+      <button class="cover-nav-btn" onclick="showTab('disney')">🏰 Disney</button>
+      <button class="cover-nav-btn" onclick="showTab('checklist')">✅ Checklist</button>
+      <button class="cover-nav-btn" onclick="showTab('biglietti')">🎫 Biglietti</button>
+      <button class="cover-nav-btn" onclick="showTab('spese')">💶 Spese su Splid</button>
+    </div>
+    <div class="cover-status" style="margin-top:18px">
       <div class="cover-status-item" style="background:var(--done-bg);cursor:pointer" onclick="showTab('alloggi')">
         <div class="cover-status-emoji">✅</div>
         <div class="cover-status-lbl" style="color:var(--done-fg)">Logistica</div>
@@ -410,16 +420,6 @@
         <div class="cover-status-lbl" style="color:var(--warn-fg)">Spese</div>
         <div class="cover-status-val" style="color:var(--warn-fg)">EUR 7.691</div>
       </div>
-    </div>
-    <div class="cover-nav">
-      <button class="cover-nav-btn" onclick="showTab('sintesi')">📋 Viaggio in breve</button>
-      <button class="cover-nav-btn" onclick="showTab('alloggi')">🏨 Alloggi</button>
-      <button class="cover-nav-btn" onclick="showTab('trasporti')">🚆 Trasporti</button>
-      <button class="cover-nav-btn" onclick="showTab('itinerario')">🗺 Giorno per giorno</button>
-      <button class="cover-nav-btn" onclick="showTab('disney')">🏰 Disney</button>
-      <button class="cover-nav-btn" onclick="showTab('checklist')">✅ Checklist</button>
-      <button class="cover-nav-btn" onclick="showTab('biglietti')">🎫 Biglietti</button>
-      <button class="cover-nav-btn" onclick="showTab('spese')">💶 Spese su Splid</button>
     </div>
   </div>
   <div id="panel-sintesi" class="panel">
