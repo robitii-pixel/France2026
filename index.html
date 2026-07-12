@@ -29,6 +29,9 @@
     display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 8px rgba(0,0,0,.35); }
   #topbar .title { font-family:Georgia,serif; font-size:13.5px; color:#e8d8b0; letter-spacing:.05em; }
   #topbar .names { font-family:sans-serif; font-size:11px; color:rgba(255,255,255,.45); }
+  #today-shortcut { display:none; min-height:36px; padding:7px 11px; border:1px solid rgba(255,255,255,.35);
+    border-radius:999px; background:var(--teal); color:#fff; font:700 11px sans-serif; cursor:pointer; white-space:nowrap; }
+  #today-shortcut.show { display:block; }
   #tabbar { position:sticky; top:calc(46px + env(safe-area-inset-top)); z-index:190; background:var(--warm);
     display:flex; overflow-x:auto; border-bottom:1px solid var(--border); scrollbar-width:none; -webkit-overflow-scrolling:touch; }
   #tabbar::-webkit-scrollbar { display:none; }
@@ -164,6 +167,10 @@
   .day-photo { overflow:hidden; background:#e8e4dc; line-height:0; }
   .day-photo img { display:block; width:100%; height:190px; object-fit:cover; object-position:center; }
   .day-links { padding:10px 12px; display:flex; gap:7px; flex-wrap:wrap; background:var(--warm); border-top:1px solid var(--border); }
+  .day-glance { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border-bottom:1px solid var(--border); }
+  .day-glance-item { min-height:58px; padding:10px 12px; background:#fff; font-family:sans-serif; }
+  .day-glance-label { margin-bottom:4px; color:var(--teal); font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+  .day-glance-value { color:var(--navy); font-size:12px; font-weight:650; line-height:1.35; }
   /* Disney */
   .disney-novita { background:var(--purp-bg); border-left:3px solid var(--purp-fg); padding:12px 14px; margin-bottom:16px; font-family:sans-serif; }
   .disney-novita-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--purp-fg); margin-bottom:6px; }
@@ -316,6 +323,7 @@
   #footer { margin-top:0; }
   @media (max-width:520px) {
     #topbar .names { display:none; }
+    #topbar .title { max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .panel { padding-left:14px; padding-right:14px; }
     .info-row { grid-template-columns:82px 1fr; }
     .cover-status { grid-template-columns:1fr; }
@@ -360,6 +368,7 @@
   <div id="topbar">
     <span class="title">Normandia & Bretagna · Disney 2026</span>
     <span class="names">Roberto & Gigi | Cinzia & Davide</span>
+    <button id="today-shortcut" type="button" onclick="goToToday()">📍 Oggi</button>
   </div>
   <div id="tabbar">
     <button class="tab active" onclick="showTab('cover')">🏠 Inizio</button>
@@ -753,6 +762,22 @@ const DAYNAV = {
   11:{q:"Disneyland Paris"}, 12:{q:"Walt Disney Studios Park, Chessy"},
   13:{q:"Disneyland Paris"}, 14:{q:"Aeroport Paris-Orly"},
 };
+const DAYINFO = {
+  1:{move:"Aeroporto e treni fino a Caen", park:"Oggi non serve l'auto"},
+  2:{move:"Giornata in auto, partenza alle 08:30", park:"Pointe du Hoc e Omaha gratuiti; Arromanches a pagamento"},
+  3:{move:"Partenza presto da Caen", park:"Parcheggio Grand Val a Étretat"},
+  4:{move:"Tappa in auto verso il Mont", park:"Honfleur in centro; al Mont parcheggio con navetta"},
+  5:{move:"A piedi e con le navette del Mont", park:"Auto al parcheggio di Mont Saint-Michel"},
+  6:{move:"Saint-Malo a piedi e battello per Dinard", park:"Lasciamo l'auto a Saint-Malo"},
+  7:{move:"Escursione in auto, rientro con calma", park:"Parcheggi tra il porto di Cancale e Pointe du Grouin"},
+  8:{move:"Circa 2 ore e 15 per tratta", park:"Accesso al sentiero GR34 dalla zona di Ploumanac'h"},
+  9:{move:"Giornata in auto lungo la costa", park:"Cap Fréhel gratuito; Fort La Latte a pagamento"},
+  10:{move:"Auto fino a Rennes, poi treno", park:"Riconsegna Sixt entro le 11:00"},
+  11:{move:"Parchi a piedi e con le navette", park:"Oggi non serve l'auto"},
+  12:{move:"Parchi a piedi e con le navette", park:"Oggi non serve l'auto"},
+  13:{move:"Programma libero tra parchi e outlet", park:"Usiamo treno, navette o camminiamo"},
+  14:{move:"Trasferimento da Disney a Orly", park:"L'ibis è a circa 300 metri dal terminal"},
+};
 function navTo(n){
   const d = DAYNAV[n]; if(!d) return;
   window.open('https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(d.q),'_blank');
@@ -813,6 +838,11 @@ function goToDay(n) {
   }, 100);
 }
 
+function goToToday() {
+  const today = tripDayToday();
+  if (today) goToDay(today);
+}
+
 function buildGiorni() {
   const container = document.getElementById('giorni-container');
   if (!container) return;
@@ -822,6 +852,7 @@ function buildGiorni() {
     const z = ZONA_COL[g.zona] || ZONA_COL.transfer;
     const isToday = g.n === today;
     const imgSrc = IMGS[g.foto] || IMGS.disney;
+    const glance = DAYINFO[g.n] || {move:'Consulta il programma della giornata',park:'Controlla la mappa prima di partire'};
     const linksHtml = g.links.length
       ? `<div class="day-links">${g.links.map(l=>`<a href="${l.url}" target="_blank" class="btn">${l.label} →</a>`).join('')}</div>`
       : '';
@@ -858,6 +889,10 @@ function buildGiorni() {
           <button onclick="navTo(${g.n})" style="flex:1;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px;font-family:sans-serif;font-size:12px;font-weight:700;cursor:pointer">🧭 Naviga</button>
           <button onclick="vegNear(${g.n})" style="flex:1;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px;font-family:sans-serif;font-size:12px;font-weight:700;cursor:pointer">🥗 Dove mangiare</button>
           <button onclick="meteoDay(${g.n})" style="flex:1;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px;font-family:sans-serif;font-size:12px;font-weight:700;cursor:pointer">☀️ Meteo</button>
+        </div>
+        <div class="day-glance">
+          <div class="day-glance-item"><div class="day-glance-label">Come ci muoviamo</div><div class="day-glance-value">${glance.move}</div></div>
+          <div class="day-glance-item"><div class="day-glance-label">Dove lasciare l'auto</div><div class="day-glance-value">${glance.park}</div></div>
         </div>
         <div class="day-photo"><img src="${imgSrc}" alt="${g.titolo}" loading="lazy"/></div>
         ${rowsHtml}
@@ -902,6 +937,8 @@ function buildCountdown() {
   const now = new Date();
   const dep = new Date('2026-07-25T00:00:00');
   const today = tripDayToday();
+  const todayShortcut = document.getElementById('today-shortcut');
+  if (todayShortcut) todayShortcut.classList.toggle('show', Boolean(today));
 
   if (today) {
     // In viaggio: mostra il giorno corrente, tappabile
